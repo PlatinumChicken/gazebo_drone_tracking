@@ -12,6 +12,14 @@ def detection_cb(msg):
     detection_info=msg.data
 
 async def manual_controls():
+
+    centerx=240
+    centery=220
+    height=100
+    tolx=20
+    toly=20
+    tolh=20
+
     drone = System()
     await drone.connect(system_address="udp://:14540")
 
@@ -51,30 +59,29 @@ async def manual_controls():
             cx=int(cx)
             cy=int(cy)
             h=int(h)
-            print(detection_info)
 
             yaw=0
             pitch=0
             roll=0
             throttle=0.5
 
-            if abs(cx-229)>20:
-                if cx-229<=0:
+            if abs(cx-centerx)>tolx:
+                if cx-centerx<=0:
                     yaw=-0.25
                 else:
                     yaw=0.25
         
-            if abs(cy-250)>10:
-                if cy-250>0:
+            if abs(cy-centery)>toly:
+                if cy-centery>0:
                     throttle=0.4
                 else:
                     throttle=0.6
 
-            if abs(h-100)>10:
-                if h-100>0:
-                    pitch=-0.15
+            if abs(h-height)>tolh:
+                if h-height>0:
+                    pitch=-0.3
                 else:
-                    pitch=0.15
+                    pitch=0.3
         
 
             await drone.manual_control.set_manual_control_input(
@@ -89,4 +96,3 @@ if __name__ == "__main__":
 
     asyncio.run(manual_controls())
     rospy.spin()
-    
