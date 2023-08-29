@@ -26,7 +26,10 @@ class Detection:
         try:
             cv_image=np.fromstring(data.data, np.uint8)
             cv_image_2=cv2.imdecode(cv_image, cv2.IMREAD_COLOR)
-            image=cv2.resize(cv_image_2, (458,342))
+            height, width, channels = cv_image_2.shape
+            height=int(height*1.5)
+            width=int(width*1.5)
+            image=cv2.resize(cv_image_2, (width,height))
         except:
             return
         
