@@ -1,6 +1,6 @@
 # Setup
 
-## Option 1
+### Option 1
 
 ```bash
 cd <Firmware_clone>
@@ -22,7 +22,7 @@ Change line 19 in detection.py to
 self.image_sub = rospy.Subscriber("/iris/usb_cam/image_raw/compressed", CompressedImage, self.callback, queue_size=1)
 ```
 
-## Option 2
+### Option 2
 
 ```bash
 cd <Firmware_clone>
