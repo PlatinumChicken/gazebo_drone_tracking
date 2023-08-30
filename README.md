@@ -37,6 +37,8 @@ roslaunch gazebo_ros empty_world.launch world_name:=$(pwd)/Tools/sitl_gazebo/wor
 ```
 in second terminal
 
+Insert 3dr iris with FPV camera
+
 # Scripts
 
 Run detection.py and then navigation.py
